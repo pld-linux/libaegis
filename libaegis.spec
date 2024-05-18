@@ -8,6 +8,7 @@ Group:		Libraries
 #Source0Download: https://github.com/jedisct1/libaegis/releases
 Source0:	https://github.com/jedisct1/libaegis/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	3f91c7dc8481173c211c005e429c4a26
+Patch0:		%{name}-aes.patch
 URL:		https://github.com/jedisct1/libaegis
 BuildRequires:	cmake >= 3.9
 BuildRequires:	rpmbuild(macros) >= 1.605
@@ -40,6 +41,7 @@ Pliki nagłówkowe biblioteki AEGIS.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -d build

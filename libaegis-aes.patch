@@ -1,0 +1,12 @@
+Using "#pragma target" doesn't enable _Float16 type, required by gcc 13 <immintrin.h>
+--- libaegis-0.1.22/CMakeLists.txt.orig	2024-05-12 01:06:36.000000000 +0200
++++ libaegis-0.1.22/CMakeLists.txt	2024-05-18 21:51:27.249449671 +0200
+@@ -13,6 +13,8 @@ include_directories("src/include")
+ file(GLOB SOURCE_FILES "src/aegis128l/*.c" "src/aegis128x2/*.c" "src/aegis128x4/*.c" "src/aegis256/*.c" "src/aegis256x2/*.c" "src/aegis256x4/*.c" "src/common/*.c")
+ file(GLOB HEADER_FILES "src/include/*.h")
+ 
++set_source_files_properties(src/aegis128x2/aegis128x2_aesni.c src/aegis128l/aegis128l_aesni.c src/aegis128x4/aegis128x4_aesni.c src/aegis256/aegis256_aesni.c src/aegis256x2/aegis256x2_aesni.c src/aegis256x4/aegis256x4_aesni.c PROPERTIES COMPILE_FLAGS "-mavx -maes")
++
+ add_library("${PROJECT_NAME}")
+ add_library("${PROJECT_NAME}::${PROJECT_NAME}" ALIAS "${PROJECT_NAME}")
+ 
