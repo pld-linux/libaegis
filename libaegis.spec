@@ -1,15 +1,15 @@
 Summary:	Implementation of the AEGIS family of high-performance authenticated ciphers
 Summary(pl.UTF-8):	Implementacja rodziny AEGIS wydajnych szyfrów z uwierzytelnieniem
 Name:		libaegis
-Version:	0.1.23
+Version:	0.9.1
 Release:	1
 License:	MIT
 Group:		Libraries
-#Source0Download: https://github.com/jedisct1/libaegis/releases
-Source0:	https://github.com/jedisct1/libaegis/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2886c4ed062bcdd605eb9d654cdc93e2
+#Source0Download: https://github.com/aegis-aead/libaegis/releases
+Source0:	https://github.com/aegis-aead/libaegis/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	b892849618eef150d48746089188c8cb
 Patch0:		%{name}-aes.patch
-URL:		https://github.com/jedisct1/libaegis
+URL:		https://github.com/aegis-aead/libaegis
 BuildRequires:	cmake >= 3.9
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,9 +65,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.md
-%attr(755,root,root) %{_libdir}/libaegis.so
+%attr(755,root,root) %{_libdir}/libaegis.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libaegis.so.0
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libaegis.so
 %{_includedir}/aegis*.h
 %{_datadir}/cmake/aegis
