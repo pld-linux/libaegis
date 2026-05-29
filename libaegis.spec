@@ -1,16 +1,16 @@
 Summary:	Implementation of the AEGIS family of high-performance authenticated ciphers
 Summary(pl.UTF-8):	Implementacja rodziny AEGIS wydajnych szyfrów z uwierzytelnieniem
 Name:		libaegis
-Version:	0.9.1
+Version:	0.10.1
 Release:	1
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/aegis-aead/libaegis/releases
 Source0:	https://github.com/aegis-aead/libaegis/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	b892849618eef150d48746089188c8cb
+# Source0-md5:	96fa6fe545196ccdffca878fbc865e34
 Patch0:		%{name}-aes.patch
 URL:		https://github.com/aegis-aead/libaegis
-BuildRequires:	cmake >= 3.9
+BuildRequires:	cmake >= 3.10
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -24,7 +24,7 @@ runtime CPU detection.
 %description -l pl.UTF-8
 Przenośne, napisane w C implementacje rodziny AEGIS wydajnych szyfrów
 z uwierzytelnieniem (AEGIS-128L, AEGIS-128X2, AEGIS-128X4, AEGIS-256,
-AEGIS-256X2, AEGIS-256X4), obsługujących wykrywaniem CPU w trakcie
+AEGIS-256X2, AEGIS-256X4), obsługujących wykrywanie CPU w trakcie
 działania.
 
 %package devel
@@ -65,8 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.md
-%attr(755,root,root) %{_libdir}/libaegis.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libaegis.so.0
+%{_libdir}/libaegis.so.*.*.*
+%ghost %{_libdir}/libaegis.so.0
 
 %files devel
 %defattr(644,root,root,755)

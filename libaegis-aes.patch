@@ -1,11 +1,12 @@
 Using "#pragma target" doesn't enable _Float16 type, required by gcc 13 <immintrin.h>
---- libaegis-0.1.22/CMakeLists.txt.orig	2024-05-12 01:06:36.000000000 +0200
-+++ libaegis-0.1.22/CMakeLists.txt	2024-05-18 21:51:27.249449671 +0200
-@@ -13,6 +13,8 @@ include_directories("src/include")
- file(GLOB SOURCE_FILES "src/aegis128l/*.c" "src/aegis128x2/*.c" "src/aegis128x4/*.c" "src/aegis256/*.c" "src/aegis256x2/*.c" "src/aegis256x4/*.c" "src/common/*.c")
+--- libaegis-0.10.1/CMakeLists.txt.orig	2026-04-02 16:21:34.000000000 +0200
++++ libaegis-0.10.1/CMakeLists.txt	2026-05-29 18:16:41.824110334 +0200
+@@ -21,6 +21,9 @@ endif()
+ file(GLOB SOURCE_FILES "src/aegis128l/*.c" "src/aegis128x2/*.c" "src/aegis128x4/*.c" "src/aegis256/*.c" "src/aegis256x2/*.c" "src/aegis256x4/*.c" "src/common/*.c" "src/raf/*.c")
  file(GLOB HEADER_FILES "src/include/*.h")
  
 +set_source_files_properties(src/aegis128x2/aegis128x2_aesni.c src/aegis128l/aegis128l_aesni.c src/aegis128x4/aegis128x4_aesni.c src/aegis256/aegis256_aesni.c src/aegis256x2/aegis256x2_aesni.c src/aegis256x4/aegis256x4_aesni.c PROPERTIES COMPILE_FLAGS "-mavx -maes")
++set_source_files_properties(src/aegis128x2/aegis128x2_avx2.c src/aegis128x4/aegis128x4_avx2.c src/aegis128x4/aegis128x4_avx512.c src/aegis256x2/aegis256x2_avx2.c src/aegis256x2/aegis256x2_avx512.c src/aegis256x4/aegis256x4_avx2.c src/aegis256x4/aegis256x4_avx512.c PROPERTIES COMPILE_FLAGS "-mavx")
 +
  add_library("${PROJECT_NAME}")
  add_library("${PROJECT_NAME}::${PROJECT_NAME}" ALIAS "${PROJECT_NAME}")
