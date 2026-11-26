@@ -1,13 +1,13 @@
 Summary:	Implementation of the AEGIS family of high-performance authenticated ciphers
 Summary(pl.UTF-8):	Implementacja rodziny AEGIS wydajnych szyfrów z uwierzytelnieniem
 Name:		libaegis
-Version:	0.10.1
+Version:	0.10.7
 Release:	1
 License:	MIT
 Group:		Libraries
 #Source0Download: https://github.com/aegis-aead/libaegis/releases
 Source0:	https://github.com/aegis-aead/libaegis/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	96fa6fe545196ccdffca878fbc865e34
+# Source0-md5:	1bb0bbd590aa852b6dca818d025f98fa
 Patch0:		%{name}-aes.patch
 URL:		https://github.com/aegis-aead/libaegis
 BuildRequires:	cmake >= 3.10
